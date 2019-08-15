@@ -12,6 +12,7 @@ export const apiCreatePost: RequestHandler = (req,res,next)=>{
     body: req.body.body,
     price: req.body.price,
     currency: req.body.currency,
+    img: [],
   }
 
   DataStore.posts.push(newPost);

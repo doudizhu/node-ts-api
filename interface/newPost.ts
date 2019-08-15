@@ -4,5 +4,6 @@ export interface NewPost{
   title:string,
   body:string,
   price:number,
-  currency:string  
+  currency:string,
+  img:string[],
 }

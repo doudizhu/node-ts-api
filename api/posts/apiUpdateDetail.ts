@@ -19,6 +19,7 @@ export const apiUpdateDetail: RequestHandler = (req,res,next)=>{
       body: req.body.body || originalPost.body,
       price: req.body.price || originalPost.price,
       currency: req.body.currency || originalPost.currency,
+      img: originalPost.img,
     }
 
     // 更新数据
