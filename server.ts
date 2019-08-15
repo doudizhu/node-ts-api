@@ -6,6 +6,7 @@ import { apiGetPosts } from "./api/posts/apiGetPosts";
 import { apiGetPostsDetail } from "./api/posts/apiGetPostsDetail";
 import { apiCreatePost } from "./api/posts/apiCreatePost";
 import { apiDeleteDetail } from "./api/posts/apiDeleteDetail";
+import { apiUpdateDetail } from "./api/posts/apiUpdateDetail";
 const app = express();
 
 // 使用post传递数据解析
@@ -23,6 +24,7 @@ app.get('/posts',apiGetPosts)
 app.get('/posts/:id',apiGetPostsDetail)
 app.post('/posts',apiCreatePost)
 app.delete('/posts/:id',apiDeleteDetail)
+app.put('/posts/:id',apiUpdateDetail)
 app.get('/tours',(req,res,next)=>{
   res.send('get tours...')
 })
