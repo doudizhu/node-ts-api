@@ -1,6 +1,6 @@
 export class PostSummary{
   userId: number;
-  id: number;
+  id: string;
   title: string;
   body: string;
   constructor(data:any){
