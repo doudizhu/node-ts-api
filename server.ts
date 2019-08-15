@@ -1,7 +1,8 @@
 // console.log('node-typescript-api');
 
 import express from 'express';
-import { apiGetPosts,apiGetPostsDetail } from "./api/posts/apiGetPosts";
+import { apiGetPosts } from "./api/posts/apiGetPosts";
+import { apiGetPostsDetail } from "./api/posts/apiGetPostsDetail";
 const app = express();
 
 // console.log(JSON.parse(JSON.stringify(DataStore.posts)))
