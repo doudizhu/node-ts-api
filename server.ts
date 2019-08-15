@@ -8,6 +8,7 @@ import { apiGetPostsDetail } from "./api/posts/apiGetPostsDetail";
 import { apiCreatePost } from "./api/posts/apiCreatePost";
 import { apiDeleteDetail } from "./api/posts/apiDeleteDetail";
 import { apiUpdateDetail } from "./api/posts/apiUpdateDetail";
+import { apiUploadImage } from "./api/posts/apiUploadImage";
 // import { CustomRequestHandler } from "./interface/express"; // 中间件
 const app = express();
 
@@ -54,6 +55,9 @@ app.get('/tours',(req,res,next)=>{
 app.post('/tours',(req,res,next)=>{
   res.send('post a new tours...')
 })
+
+// 上传图片
+app.post('/posts/:id/img',apiUploadImage)
 
 app.listen(process.env.PORT || 8091,()=>{
   console.log('Server started...')
