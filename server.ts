@@ -5,6 +5,7 @@ import bodyParser from "body-parser"; // 使用post传递数据解析
 import { apiGetPosts } from "./api/posts/apiGetPosts";
 import { apiGetPostsDetail } from "./api/posts/apiGetPostsDetail";
 import { apiCreatePost } from "./api/posts/apiCreatePost";
+import { apiDeleteDetail } from "./api/posts/apiDeleteDetail";
 const app = express();
 
 // 使用post传递数据解析
@@ -21,6 +22,7 @@ app.get('/',(req,res,next)=>{
 app.get('/posts',apiGetPosts)
 app.get('/posts/:id',apiGetPostsDetail)
 app.post('/posts',apiCreatePost)
+app.delete('/posts/:id',apiDeleteDetail)
 app.get('/tours',(req,res,next)=>{
   res.send('get tours...')
 })
