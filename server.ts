@@ -9,6 +9,7 @@ import { apiCreatePost } from "./api/posts/apiCreatePost";
 import { apiDeleteDetail } from "./api/posts/apiDeleteDetail";
 import { apiUpdateDetail } from "./api/posts/apiUpdateDetail";
 import { apiUploadImage } from "./api/posts/apiUploadImage";
+import { aipErrorHandler } from './api/general/errorHanding';
 // import { CustomRequestHandler } from "./interface/express"; // 中间件
 const app = express();
 
@@ -58,6 +59,9 @@ app.post('/tours',(req,res,next)=>{
 
 // 上传图片
 app.post('/posts/:id/img',apiUploadImage)
+
+// 处理错误信息
+app.use(aipErrorHandler)
 
 app.listen(process.env.PORT || 8091,()=>{
   console.log('Server started...')
