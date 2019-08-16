@@ -147,6 +147,24 @@ app.param('toDate',dateParam);
  app.get('/static/download/:id',apiDownloadImage)
  app.disable('x-powered-by') // 隐藏请求框架
 
+ /**
+  * 2xx - success
+  * 3xx - redirect 重定向
+  * 4xx = client error 客户端
+  * 5xx - server error 服务端
+  */
+ /**
+  * 200 - ok 数据请求成功并返回
+  * 201 - 创建（post,put,patch）
+  * 204 - 删除 请求成功 但没数据返回
+  */
+ /**
+  * 400 - 请求错误 客户端问题
+  * 401 - 未授权 未携带token
+  * 404 - 未找到页面 页面不存在
+  * 405 - 方法未经允许 post到只读数据中
+  */
+
 app.listen(process.env.PORT || 8091,()=>{
   console.log('Server started...')
 })
