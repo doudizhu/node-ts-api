@@ -14,6 +14,7 @@ import { APIError } from './model/shared/message';
 import { dateParam } from './api/general/reqParams/dateParam';
 import { apiCheckPostFilter } from './api/posts/apiCheckPostFilter';
 import { apiDownloadImage } from './api/posts/apiDownloadImage';
+import { postsRouter } from './api/posts/apiPosts';
 // import { CustomRequestHandler } from "./interface/express"; // 中间件
 const app = express();
 
@@ -58,12 +59,17 @@ app.get('/',(req,res,next)=>{
 })
 */
 
+// 配置posts路径
+app.use('/posts',postsRouter)
+/*
 // app.get('/posts',apiGetPosts)
 app.get('/posts', apiCheckPostFilter, apiGetPosts);
 app.get('/posts/:id',apiGetPostsDetail)
 app.post('/posts',apiCreatePost)
 app.delete('/posts/:id',apiDeleteDetail)
 app.put('/posts/:id',apiUpdateDetail)
+*/
+
 app.get('/tours',(req,res,next)=>{
   res.send('get tours...')
 })
