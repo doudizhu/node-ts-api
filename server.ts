@@ -11,6 +11,7 @@ import { apiUpdateDetail } from "./api/posts/apiUpdateDetail";
 import { apiUploadImage } from "./api/posts/apiUploadImage";
 import { aipErrorHandler } from './api/general/errorHanding';
 import { APIError } from './model/shared/message';
+import { dateParam } from './api/general/reqParams/dateParam';
 // import { CustomRequestHandler } from "./interface/express"; // 中间件
 const app = express();
 
@@ -82,7 +83,7 @@ app.use(aipErrorHandler)
  * req.secure,req.cookies,req.fresh...
 */
 
-
+/*
 app.use((req,res,next)=>{
   if(req.accepts('application/json')){
     next()
@@ -100,6 +101,22 @@ app.get('/headers',(req,res,next)=>{
 app.post('/headers',(req,res,next)=>{
   res.json(req.headers)
 })
+*/
+
+
+// app.get('/booking/:id(\\d{4})',(req,res,next)=>{
+//   res.json(req.params)
+// })
+
+// const dateFormat = '\\d{4}-\\d{1,2}-\\d{1,2}'
+// app.get(`/booking/:fromDate(${dateFormat})/:toDate(${dateFormat})`,(req,res,next)=>{
+//   res.json(req.params);
+// })
+app.get(`/booking/:fromDate/:toDate`,(req,res,next)=>{
+  res.json(req.params);
+})
+app.param('fromDate',dateParam);
+app.param('toDate',dateParam);
 
 
 app.listen(process.env.PORT || 8091,()=>{
