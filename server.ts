@@ -13,6 +13,7 @@ import { aipErrorHandler } from './api/general/errorHanding';
 import { APIError } from './model/shared/message';
 import { dateParam } from './api/general/reqParams/dateParam';
 import { apiCheckPostFilter } from './api/posts/apiCheckPostFilter';
+import { apiDownloadImage } from './api/posts/apiDownloadImage';
 // import { CustomRequestHandler } from "./interface/express"; // 中间件
 const app = express();
 
@@ -22,6 +23,15 @@ app.use(bodyParser.json()) // parse application/json
 
 // 配置static指向的路径
 app.use('/static',express.static(path.resolve('./','public','img')))
+
+// 设置允许跨域
+app.use((req,res,next)=>{
+  res.set({
+    'Access-Control-Allow-Origin':'*',
+    'Access-Control-Allow-Methods':'GET,POST,PUT,PATCH,DELETE',
+  });
+  next();
+})
 
 // console.log(JSON.parse(JSON.stringify(DataStore.posts)))
 
@@ -120,6 +130,22 @@ app.get(`/booking/:fromDate/:toDate`,(req,res,next)=>{
 app.param('fromDate',dateParam);
 app.param('toDate',dateParam);
 */
+
+
+/** Response Object
+ * res.send
+ * res.json
+ * res.format
+ * res.sendFile
+ * res.download
+ * 
+ * res.headers res.get res.set
+ * res.status
+ * 
+ */
+
+ app.get('/static/download/:id',apiDownloadImage)
+ app.disable('x-powered-by') // 隐藏请求框架
 
 app.listen(process.env.PORT || 8091,()=>{
   console.log('Server started...')
