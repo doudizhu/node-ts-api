@@ -3,9 +3,9 @@ import {RequestHandler} from 'express';
 import { PostDetail } from "../../model/shared/postDetail";
 
 export const apiGetPostsDetail: RequestHandler = (req,res,next)=>{
-  console.log('DataStore.posts:',JSON.stringify(DataStore.posts))
+  // console.log('DataStore.posts:',JSON.stringify(DataStore.posts))
   const selectedPost = DataStore.posts.find((element:any)=>element.id == req.params.id)
-  console.log('selectedPost:',selectedPost);
+  // console.log('selectedPost:',selectedPost);
 
   if(selectedPost){
     const selectedTodos = DataStore.todos.filter((item:any)=>item.postId == req.params.id)

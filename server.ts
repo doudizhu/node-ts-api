@@ -12,6 +12,7 @@ import { apiUploadImage } from "./api/posts/apiUploadImage";
 import { aipErrorHandler } from './api/general/errorHanding';
 import { APIError } from './model/shared/message';
 import { dateParam } from './api/general/reqParams/dateParam';
+import { apiCheckPostFilter } from './api/posts/apiCheckPostFilter';
 // import { CustomRequestHandler } from "./interface/express"; // 中间件
 const app = express();
 
@@ -47,7 +48,8 @@ app.get('/',(req,res,next)=>{
 })
 */
 
-app.get('/posts',apiGetPosts)
+// app.get('/posts',apiGetPosts)
+app.get('/posts', apiCheckPostFilter, apiGetPosts);
 app.get('/posts/:id',apiGetPostsDetail)
 app.post('/posts',apiCreatePost)
 app.delete('/posts/:id',apiDeleteDetail)
@@ -103,7 +105,7 @@ app.post('/headers',(req,res,next)=>{
 })
 */
 
-
+/*
 // app.get('/booking/:id(\\d{4})',(req,res,next)=>{
 //   res.json(req.params)
 // })
@@ -117,7 +119,7 @@ app.get(`/booking/:fromDate/:toDate`,(req,res,next)=>{
 })
 app.param('fromDate',dateParam);
 app.param('toDate',dateParam);
-
+*/
 
 app.listen(process.env.PORT || 8091,()=>{
   console.log('Server started...')
